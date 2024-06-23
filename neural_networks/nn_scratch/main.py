@@ -7,36 +7,32 @@ def sigmoid(x):
 def deriv_sigmoid(x):
     return sigmoid(x) * (1-sigmoid(x))
 
-x_train = np.array([[1,0],[0,1],[0,0],[1,1]]) # Row = sample, Column = Feature
-y_train = np.array([[0,1],[0,1],[0,0],[0,0]]) #one hot encoding of our output [1,0] represents 0, [0,1] represents 1
+x_train = np.array([[1,0],[0,1],[0,0],[1,1]])
+y_train = np.array([[1],[1],[0],[0]])
 m,n = x_train.shape
 
-# Weights and biases
-w1 = np.random.randn(4,4) # Should be based on what we want the output to be
-b1 = np.random.randn(2)
+w1 = np.random.randn(x_train.shape[1], y_train.shape[1])
+b1 = np.zeros((1,y_train.shape[1]))
 
-# Forward Propigation
-z1 = (w1.T @ x_train) + b1
-# Sigmoid activation for this example
-for i in range(0, len(z1)):
-    for j in range(0, len(z1[i])):
-        z1[i][j] = sigmoid(z1[i][j])
+def forward_prop(x,w,b):
+    z = np.dot(x,w) + b
+    gz = np.vectorize(sigmoid)
+    a = gz(z)
+    return z,a
 
-# Back propigation
-dz1 = y_train - z1
-dw1 = 1 / m * dz1.dot(z1.T)
-db1 = 1 / m * np.sum(dz1)
+def back_prop(z,a,x,y):
+    dl = a - y
+    deriv_sig_vec = np.vectorize(deriv_sigmoid)
+    gz = deriv_sig_vec(z)
+    dw = np.dot(x.T, dl*gz)/m
+    db = np.sum(dl, axis=0, keepdims=True)/m
+    return dw,db
 
-# Update our parameters
-alpha = 0.1
-w1 = w1 - alpha * dw1
-b1 = b1 - alpha * db1
+for i in range(0, 1000):
+    z,a = forward_prop(x_train, w1, b1)
+    dw, db = back_prop(z, a, x_train, y_train)
+    w1 = w1 - (.01 * dw)
+    b1 = b1 - (.01 * db)
 
-# Prediction
-z1 = (w1.T @ x_train) + b1
-# Sigmoid activation for this example
-for i in range(0, len(z1)):
-    for j in range(0, len(z1[i])):
-        z1[i][j] = sigmoid(z1[i][j])
-
-print(z1)
+z,a = forward_prop(x_train, w1, b1)
+print(a)

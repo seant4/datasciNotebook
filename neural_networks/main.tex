@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Neural Networks}
+\author{Sean Theisen}
+\date{June 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+The following will outline the mathematics behind nueral networks
+
+\section{Forward Propogation}
+1. Training Matrix
+	\[\{x \in R^{m x n} : m = samples, n = featues\}\]\\
+2. Weights Matrix
+	\[\{w \in R^{n x p} : n = features, p = nodes\}\]\\
+3. Biasis Vector 
+	\[\{b \in R^{p} : n = features\}\]\\
+4. Forward Propogation
+	\[f := \mathbb{R}^{nxp} \mapsto \mathbb{R}^{nxp}\]\\
+\begin{equation}
+	z = ((x@w)+b)
+\end{equation}
+\begin{equation}
+	a = f(z)
+\end{equation}
+
+\section{Back Propogation}
+
+Back propogation is done via gradient descent
+
+
+\begin{equation}
+	\frac{dC}{dw} = (x^{T} @ (a-y)*g'(z))/m
+\end{equation}
+\begin{equation}
+	\frac{dC}{db} = (\sum (a-y))/ m
+\end{equation}
+
+\section{Optimization}
+\begin{equation}
+	w_{i} = w_{i} - (\alpha x \frac{dC}{dw_{i}})
+\end{equation}
+\begin{equation}
+	b = b - (\alpha x \frac{dC}{db})
+\end{equation}
+
+\end{document}
