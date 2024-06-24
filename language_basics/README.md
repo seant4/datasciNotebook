@@ -5,11 +5,11 @@ the following contain basics of each programming language in the context of data
     Great for Statistics and Exploratory analysis
 2. Python
     Best language for mathematical analysis
-3. Rust
-    Newer in the field of data science. Here out of curiosity
-4. Bend
+3. Bend
     New high level massively parallel programming language
-5. Go
+4. Go
     Fast and easy to use
-6. C
+5. C
     Favorite for parallel computing
+6. Julia
+	Mathematics

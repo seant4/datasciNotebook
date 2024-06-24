@@ -3,7 +3,7 @@
 
 
 double basic_quad(double x){
-	return (-1 * (x*x)) + (2 * x) + 0;
+	return 1 / ((x*x) - x + 1);
 }
 
 
