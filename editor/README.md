@@ -23,3 +23,7 @@ Useful for finding files
 - Ctrl - T:  Open
 - Ctrl - G:  Git
 - Ctrl - S:  Search
+
+#NVIM
+- Ctrl - W
+	- <direction> #switch panes
