@@ -62,3 +62,66 @@ np.concatenate(a,b) #Concatenate 2 arrays
 np.dot(a,b) # Dot product
 a @ b #preffered when a and b are 2 dimensional
 np.vdot(a,b) # Vector dot product
+
+# Lambda function
+## Small anonymous function
+x = lambda a : a + 10
+print(x(5))
+
+# List Comprehensions
+x = [1,2,3,4,5]
+x = [i + 1 for i in x]
+
+# Merging
+x = pd.DataFrame({'id' : [1,2,10,12], 'val1':['a','b','c','d']})
+y = pd.DataFrame({'id' : [1,2,9,8], 'val1':['p','q','r','s']})
+## Inner join
+df = pd.merge(x,y,on='id', how='inner')
+"""
+  id val1_x val1_y
+0 1  a      p
+1 2  b      q
+"""
+
+## Right Outer
+df = pd.merge(x,y,on='id', how='right')
+"""
+  id val1_x val1_y
+0 1  a      p
+1 2  b      q
+2 9  NaN    r
+3 8  NaN    d
+"""
+
+## Left outer
+df = pd.merge(x,y, on='id', how='left')
+"""
+  id val1_x val1_y
+0 1  a      p
+1 2  b      q
+2 10 c      NaN
+3 12 d      NaN
+
+"""
+
+## Full outer
+df = pd.merge(x,y,on='id', how='outer')
+"""
+  id val1_x val1_y
+0 1  a      p
+1 2  b      q
+2 10 c      NaN
+3 12 d      NaN
+4 9  NaN    r
+5 8  NaN    s
+"""
+
+## Full inner
+df = pd.merge(x,y, left_index=True, right_index=True)
+"""
+  id_x va1_x id_y val1_y
+0 1    a     1    p
+1 2    b     2    q
+2 10   c     9    r
+3 12   d     8    s
+"""
