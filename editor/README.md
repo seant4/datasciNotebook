@@ -25,5 +25,6 @@ Useful for finding files
 - Ctrl - S:  Search
 
 #NVIM
+- Ctrl - W+N: New
 - Ctrl - W
 	- <direction> #switch panes
