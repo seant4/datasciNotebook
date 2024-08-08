@@ -24,6 +24,11 @@ Useful for finding files
 - Ctrl - G:  Git
 - Ctrl - S:  Search
 
+## Harpoo
+Project navigation
+- Ctrl - H: Open harpoon menu
+- Ctrl - A: Add file to menu
+
 #NVIM
 - Ctrl - W
 	- <direction> #switch panes
