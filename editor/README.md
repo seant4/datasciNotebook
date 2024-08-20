@@ -30,5 +30,6 @@ Project navigation
 - Ctrl - A: Add file to menu
 
 #NVIM
+- Ctrl - W+N: New
 - Ctrl - W
 	- <direction> #switch panes
